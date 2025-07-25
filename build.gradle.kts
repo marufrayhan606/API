@@ -46,6 +46,13 @@ tasks.withType<Jar> {
     }
 }
 
+tasks.jar {
+    archiveBaseName.set("ktor-api")  // 👈 Your custom app name
+    archiveVersion.set("1.0")
+    manifest {
+        attributes["Main-Class"] = "MainKt"
+    }
+}
 
 tasks.test {
     useJUnitPlatform()
