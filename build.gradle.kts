@@ -14,12 +14,12 @@ repositories {
 
 
 kotlin {
-    jvmToolchain(22) // Align Kotlin with Java 22
+    jvmToolchain(17) // Align Kotlin with Java 22
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(22)) // ✅ match Kotlin
+        languageVersion.set(JavaLanguageVersion.of(17)) // ✅ match Kotlin
     }
 }
 
