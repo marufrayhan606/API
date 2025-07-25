@@ -1,11 +1,9 @@
-# Set working directory
+FROM gradle:8.2.0-jdk17 AS build
 WORKDIR /app
-
-# Copy everything
 COPY . .
+RUN ./gradlew buildFatJar
 
-# Make gradlew executable AFTER the copy
-RUN chmod +x gradlew
-
-# Run the build with cache mount
-RUN --mount=type=cache,id=s/gradle-5b65b6ed-ca52-496f-8dde-8641c283aa46-/root/gradle,target=/root/.gradle ./gradlew buildFatJar
+FROM eclipse-temurin:17
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar app.jar
+CMD ["java", "-jar", "app.jar"]
