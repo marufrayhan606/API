@@ -48,6 +48,23 @@ tasks.jar {
     }
 }
 
+tasks.register<Jar>("buildFatJar") {
+    group = "build"
+    archiveBaseName.set("ktor-api")
+    archiveVersion.set("1.0")
+    manifest {
+        attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"
+    }
+    from(sourceSets.main.get().output)
+
+    dependsOn(configurations.runtimeClasspath)
+    from({
+        configurations.runtimeClasspath.get().map {
+            if (it.isDirectory) it else zipTree(it)
+        }
+    })
+}
+
 tasks.test {
     useJUnitPlatform()
 }
