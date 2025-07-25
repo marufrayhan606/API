@@ -6,5 +6,5 @@ RUN ./gradlew clean buildFatJar
 
 FROM eclipse-temurin:17
 WORKDIR /app
-COPY --from=build /app/build/libs/ktor-api-1.0.jar
+# COPY --from=build /app/build/libs/ktor-api-1.0.jar
 CMD ["java", "-jar", "ktor-api-1.0.jar"]
