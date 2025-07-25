@@ -37,7 +37,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 }
 
 tasks.withType<Jar> {
