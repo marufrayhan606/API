@@ -37,14 +37,14 @@ dependencies {
 }
 
 application {
-    mainClass.set("io.ktor.server.netty.EngineMain")
+    mainClass.set("MainKt")
 }
 
 tasks.jar {
     archiveBaseName.set("ktor-api")  // 👈 Your custom app name
     archiveVersion.set("1.0")
     manifest {
-        attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"
+        attributes["Main-Class"] = "MainKt"
     }
 }
 
@@ -53,7 +53,7 @@ tasks.register<Jar>("buildFatJar") {
     archiveBaseName.set("ktor-api")
     archiveVersion.set("1.0")
     manifest {
-        attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"
+        attributes["Main-Class"] = "MainKt"
     }
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE  // 👈 This line resolves the module-info conflict
