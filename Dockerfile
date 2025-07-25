@@ -1,6 +1,7 @@
 FROM gradle:8.2.0-jdk17 AS build
 WORKDIR /app
 COPY . .
+RUN chmod +x gradlew
 RUN ./gradlew buildFatJar
 
 FROM eclipse-temurin:17
