@@ -1,0 +1,12 @@
+[phases.setup]
+commands = [
+  "chmod +x gradlew"
+]
+
+[phases.build]
+commands = [
+  "./gradlew buildFatJar"
+]
+
+[start]
+cmd = "java -jar build/libs/api-ktor-all.jar"
