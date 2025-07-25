@@ -6,5 +6,5 @@ RUN ./gradlew buildFatJar
 
 FROM eclipse-temurin:17
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/build/libs/ktor-api-1.0.jar app.jar
 CMD ["java", "-jar", "app.jar"]
