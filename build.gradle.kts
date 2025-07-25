@@ -55,6 +55,9 @@ tasks.register<Jar>("buildFatJar") {
     manifest {
         attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"
     }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE  // 👈 This line resolves the module-info conflict
+
     from(sourceSets.main.get().output)
 
     dependsOn(configurations.runtimeClasspath)
@@ -64,7 +67,6 @@ tasks.register<Jar>("buildFatJar") {
         }
     })
 }
-
 tasks.test {
     useJUnitPlatform()
 }
