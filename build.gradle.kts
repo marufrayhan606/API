@@ -40,17 +40,11 @@ application {
     mainClass.set("io.ktor.server.netty.EngineMain")
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "MainKt"
-    }
-}
-
 tasks.jar {
     archiveBaseName.set("ktor-api")  // 👈 Your custom app name
     archiveVersion.set("1.0")
     manifest {
-        attributes["Main-Class"] = "MainKt"
+        attributes["Main-Class"] = "io.ktor.server.netty.EngineMain"
     }
 }
 
